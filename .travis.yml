@@ -16,7 +16,7 @@ before_install:
 
 script:
 - cd base64 && npm run test && cd ..
-- faas-cli build -f wettermode.yml
+- faas-cli build -f wetternode.yml
 
 #notifications:
 #  email:
