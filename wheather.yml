@@ -1,0 +1,16 @@
+provider:
+  name: faas
+  gateway: http://192.168.64.4:31112
+functions:
+  wheather:
+    lang: java8
+    handler: ./wheather
+    image: tillkuhn/wheather:latest
+    environment:
+      API_URL: https://api.apixu.com/v1/current.json?key=cacdf29dc2be47d484a105606152306&q=
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+        cpu: 500m
+        memory: 512Mi

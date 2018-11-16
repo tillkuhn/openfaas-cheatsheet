@@ -1,0 +1,10 @@
+provider:
+  name: faas
+  gateway: http://192.168.64.4:31112
+functions:
+  wetternode:
+    lang: node
+    handler: ./wetternode
+    image: tillkuhn/wetternode:latest
+    environment:
+      API_URL: https://api.apixu.com/v1/current.json

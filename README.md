@@ -9,6 +9,7 @@
   - [Install OpenFaaS CLI via shell or homebrew](#install-openfaas-cli-via-shell-or-homebrew)
   - [Deploy an invoke new function](#deploy-an-invoke-new-function)
   - [Interact with REST API](#interact-with-rest-api)
+  - [Develop new function with your favourite template](#develop-new-function-with-your-favourite-template)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -81,10 +82,13 @@
 
  ## Deploy an invoke new function
 
-* Deploy from Store, pick https://github.com/faas-and-furious/figlet, invoke via Text, get ASCII back (codebase is [here](https://github.com/faas-and-furious/figlet)) 
-* Deploy manually use Docker Image `templum/functions-base64` from  [Dockerhub](https://hub.docker.com/r/templum/functions-base64/) (codebase is [here](https://github.com/Templum/OpenFaaS-CI))
-* Sample request for base64 function: `{"encode":true,"text":"hase"}`
-* [Node info function ](https://github.com/openfaas/faas/tree/master/sample-functions/NodeInfo)
+Deploy from Store, pick https://github.com/faas-and-furious/figlet, invoke via Text, get ASCII back (codebase is [here](https://github.com/faas-and-furious/figlet)) 
+
+Deploy manually use Docker Image `templum/functions-base64` from  [Dockerhub](https://hub.docker.com/r/templum/functions-base64/) (codebase is [here](https://github.com/Templum/OpenFaaS-CI))
+
+Sample request for base64 function: `{"encode":true,"text":"hase"}`
+
+Deploy [Node info function ](https://github.com/openfaas/faas/tree/master/sample-functions/NodeInfo)
 
     $ curl http://192.168.64.4:31112/function/nodeinfo
     Hostname: nodeinfo-546584dd67-7qmsc
@@ -94,8 +98,9 @@
     CPU count: 2
     Uptime: 5134
 
-* Deploy and invoke via CLI   
+Deploy and invoke functions via CLI   
 
+    $ export OPENFAAS_URL=http://192.168.64.4:31112/
     $ faas-cli deploy --image functions/nodeinfo:latest --name nodeinfo --gateway http://192.168.64.4:31112/
     Deployed. 202 Accepted.
 
@@ -117,4 +122,38 @@ Useful system APIs
     $ curl http://192.168.64.4:31112/system/info
     $ curl http://192.168.64.4:31112/system/functions
 
+## Develop new function with your favourite template
 
+* See  https://gist.github.com/Templum/494ccc02c8537553400076e75562d674 and https://github.com/Templum/OpenFaaS-CI
+* Login to [Dockerhub](https://hub.docker.com/) and use your account as prefix in image urls specified  in the <function>.yml files
+
+
+    $ faas-cli template pull
+    2018/11/16 11:39:07 Attempting to expand templates from https://github.com/openfaas/templates.git
+    2018/11/16 11:39:09 Fetched 14 template(s) : [csharp dockerfile go go-armhf java8 node node-arm64 node-armhf php7 python python-armhf python3 python3-armhf ruby] from https://github.com/openfaas/templates.git
+    
+
+    $ faas-cli up -f wheather.yml     ## is short for ...
+    $ faas-cli build -f wheather.yml && faas-cli push -f wheather.yml && faas-cli deploy wheather.yml
+    
+Start with node (simple), if you want check out [Java comes to the official OpenFaaS templates](https://blog.alexellis.io/java-comes-to-openfaas/) for Tutorial to create a Java Function  
+
+    $ faas-cli new --lang java8 wheather && cd wheather
+    $ tree
+    |____gradle
+    | |____wrapper
+    | | |____gradle-wrapper.jar
+    | | |____gradle-wrapper.properties
+    |____build.gradle
+    |____settings.gradle
+    |____src
+    | |____test
+    | | |____java
+    | | | |____HandlerTest.java
+    | |____main
+    | | |____java
+    | | | |____com
+    | | | | |____openfaas
+    | | | | | |____function
+    | | | | | | |____Handler.java
+    
