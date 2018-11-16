@@ -1,8 +1,25 @@
-# OpenFaaS 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-## Minikube on Mac
+- [OpenFaaS - Serverless Functions Made Simple¶](#openfaas---serverless-functions-made-simple%C2%B6)
+  - [Install Minikube](#install-minikube)
+  - [Install faas-netes manually (alternatively via helm)](#install-faas-netes-manually-alternatively-via-helm)
+  - [Open OpenFaaS UI and Minikube dashboard](#open-openfaas-ui-and-minikube-dashboard)
+  - [Install OpenFaaS CLI via shell or homebrew](#install-openfaas-cli-via-shell-or-homebrew)
+  - [Deploy an invoke new function](#deploy-an-invoke-new-function)
+  - [Interact with REST API](#interact-with-rest-api)
 
-* https://blog.arkey.fr/2018/06/18/minikube-with-hyperkit/
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# OpenFaaS - Serverless Functions Made Simple¶
+
+[Intro](https://docs.openfaas.com/)
+
+## Install Minikube
+
+* To install Minikube with hyperkit on Mac see [Minikube on Mac](https://blog.arkey.fr/2018/06/18/minikube-with-hyperkit/)
+* Start with `rm -f ~/.minikube/machines/minikube/hyperkit.pid; minikube start --vm-driver hyperkit -v 10` (see https://github.com/kubernetes/minikube/issues/1926)
 
 ## Install faas-netes manually (alternatively via helm)
 
@@ -62,10 +79,20 @@
     faas-cli: stable 0.7.7 (bottled)
     CLI for templating and/or deploying FaaS functions    
 
- ## Deploy a new function
+ ## Deploy an invoke new function
 
-* Deploy from Store, pick https://github.com/faas-and-furious/figlet, invoke via Text, get ASCII back (codebase is [here](https://github.com/faas-and-furious/figlet))
+* Deploy from Store, pick https://github.com/faas-and-furious/figlet, invoke via Text, get ASCII back (codebase is [here](https://github.com/faas-and-furious/figlet)) 
 * Deploy manually use Docker Image `templum/functions-base64` from  [Dockerhub](https://hub.docker.com/r/templum/functions-base64/) (codebase is [here](https://github.com/Templum/OpenFaaS-CI))
+* Sample request for base64 function: `{"encode":true,"text":"hase"}`
+* [Node info function ](https://github.com/openfaas/faas/tree/master/sample-functions/NodeInfo)
+
+    $ curl http://192.168.64.4:31112/function/nodeinfo
+    Hostname: nodeinfo-546584dd67-7qmsc
+
+    Platform: linux
+    Arch: x64
+    CPU count: 2
+    Uptime: 5134
 
 ## Interact with REST API
 
