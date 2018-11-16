@@ -1,31 +1,20 @@
 # OpenFaaS 
 
-## Install manually (alternatively via helm)
+## Minikube on Mac
+
+* https://blog.arkey.fr/2018/06/18/minikube-with-hyperkit/
+
+## Install faas-netes manually (alternatively via helm)
 
     $ git clone https://github.com/openfaas/faas-netes.git
     $ cd faas-netes && git checkout tags/0.6.3
     $ kubectl apply -f namespaces.yml
+    
     $ kc get namespaces|grep faas
     openfaas      Active    2m
     openfaas-fn   Active    2m    
 
     $ kubectl apply -f ./yaml
-    configmap/alertmanager-config created
-    deployment.apps/alertmanager created
-    service/alertmanager created
-    service/faas-netes created
-    deployment.apps/gateway created
-    service/gateway created
-    deployment.apps/nats created
-    service/nats created
-    configmap/prometheus-config created
-    deployment.apps/prometheus created
-    service/prometheus created
-    deployment.apps/queue-worker created
-    serviceaccount/faas-controller created
-    role.rbac.authorization.k8s.io/faas-controller created
-    rolebinding.rbac.authorization.k8s.io/faas-controller-fn created
-
     $ kc get all -n openfaas
     NAME                                READY     STATUS    RESTARTS   AGE
     pod/alertmanager-f5b4dfb8b-dv2vd    1/1       Running   0          1m
@@ -55,11 +44,14 @@
     replicaset.apps/prometheus-7d78d54b57     1         1         1         1m
     replicaset.apps/queue-worker-8698f5bb78   1         1         1         1m    
 
-## Open OpenFaaS UI
+## Open OpenFaaS UI and Minikube dashboard
 
-    minikube -n openfaas service gateway
+    $ minikube -n openfaas service gateway
     Opening kubernetes service openfaas/gateway in default browser...
     http://192.168.64.4:31112/ui/
+
+    $ minikube dashboard
+    Opening http://127.0.0.1:57952/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/ in your default browser...    
 
  ## Install OpenFaaS CLI via shell or homebrew
 
@@ -69,3 +61,19 @@
     $ brew info faas-cli
     faas-cli: stable 0.7.7 (bottled)
     CLI for templating and/or deploying FaaS functions    
+
+ ## Deploy a new function
+
+* Deploy from Store, pick https://github.com/faas-and-furious/figlet, invoke via Text, get ASCII back (codebase is [here](https://github.com/faas-and-furious/figlet))
+* Deploy manually use Docker Image `templum/functions-base64` from  [Dockerhub](https://hub.docker.com/r/templum/functions-base64/) (codebase is [here](https://github.com/Templum/OpenFaaS-CI))
+
+## Interact with REST API
+
+[Exploring or editing the Swagger API documentation](https://github.com/openfaas/faas/tree/master/api-docs)
+
+Useful system APIs
+
+    $ curl http://192.168.64.4:31112/system/info
+    $ curl http://192.168.64.4:31112/system/functions
+
+
