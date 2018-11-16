@@ -19,6 +19,8 @@
 
 [Read Intro](https://docs.openfaas.com/)
 
+![OpenFaaS UI](/ui.jpg?raw=true)
+
 ## Install Minikube
 
 * To install Minikube with hyperkit on Mac see [Minikube on Mac](https://blog.arkey.fr/2018/06/18/minikube-with-hyperkit/)
@@ -126,9 +128,9 @@ Useful system APIs
 
 ## Develop new function with your favourite template
 
-* See  https://gist.github.com/Templum/494ccc02c8537553400076e75562d674 and https://github.com/Templum/OpenFaaS-CI
-* Login to [Dockerhub](https://hub.docker.com/) and use your account as prefix in image urls specified  in the <function>.yml files
+See https://gist.github.com/Templum/494ccc02c8537553400076e75562d674 and https://github.com/Templum/OpenFaaS-CI
 
+Login to [Dockerhub](https://hub.docker.com/) and use your account as prefix in image urls specified  in the <function>.yml files
 
     $ faas-cli template pull
     2018/11/16 11:39:07 Attempting to expand templates from https://github.com/openfaas/templates.git
@@ -168,3 +170,7 @@ Invoke deployed function via CLI (or UI) ....
 ## OpenFaaS in CI
 
 [Sample config using Travis](https://github.com/Templum/OpenFaaS-CI/blob/master/.travis.yml) (similar to Gitlab CI)   
+
+## OpenFaaS Serverless Dashboard (Grafana)
+
+https://grafana.com/dashboards/3434
