@@ -12,7 +12,7 @@ module.exports = (cityName, callback) => {
         }
         const { statusCode } = res;
         if (statusCode === 200) {
-            console.error(`Weather request for ${cityName} was successful`);
+            console.error(`Weather request for ${cityName} was successful. Yeah`);
 
             const { current, location } = body;
             const weather = {

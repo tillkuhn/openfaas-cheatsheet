@@ -26,6 +26,6 @@ script:
 #    on_failure: always
 
 after_success:
-#- if [[ "$TRAVIS_BRANCH" == "master" ]]; then echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin; fi
-#- docker tag tillkuhn/functions-wetternode:latest "tillkuhn/functions-wetternode:${TRAVIS_COMMIT}"
-#- if [[ "$TRAVIS_BRANCH" == "master" ]]; then docker push "tillkuhn/functions-base64:${TRAVIS_COMMIT}"; fi
+- if [[ "$TRAVIS_BRANCH" == "master" ]]; then echo $DOCKER_PASS | docker login --username $DOCKER_USER --password-stdin; fi
+- docker tag tillkuhn/functions-wetternode:latest "tillkuhn/functions-wetternode:${TRAVIS_COMMIT}"
+- if [[ "$TRAVIS_BRANCH" == "master" ]]; then docker push "tillkuhn/functions-base64:${TRAVIS_COMMIT}"; fi
