@@ -12,9 +12,9 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# OpenFaaS - Serverless Functions Made Simple¶
+# OpenFaaS - Serverless Functions Made Simple
 
-[Intro](https://docs.openfaas.com/)
+[Read Intro](https://docs.openfaas.com/)
 
 ## Install Minikube
 
