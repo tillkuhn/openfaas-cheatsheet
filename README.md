@@ -156,4 +156,13 @@ Start with node (simple), if you want check out [Java comes to the official Open
     | | | | |____openfaas
     | | | | | |____function
     | | | | | | |____Handler.java
+    (...)
     
+Invoke deployed function via CLI (or UI) ....
+    
+    $ echo -n "Mannheim"|faas-cli invoke wheather
+    {"location":{"name":"Mannheim","region":"Baden-Wurttemberg","country":"Germany","lat":49.49, (...)
+    
+## OpenFaaS in CI
+
+[Sample config using Travis](https://github.com/Templum/OpenFaaS-CI/blob/master/.travis.yml) (similar to Gitlab CI)   

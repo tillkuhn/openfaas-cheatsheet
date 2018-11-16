@@ -1,6 +1,5 @@
 package com.openfaas.function;
 
-import com.openfaas.model.IHandler;
 import com.openfaas.model.IResponse;
 import com.openfaas.model.IRequest;
 import com.openfaas.model.Response;
@@ -26,7 +25,7 @@ public class Handler implements com.openfaas.model.IHandler {
             okhttp3.Response response = client.newCall(request).execute();
             String ret = response.body().string();
             res.setBody(ret);
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
             res.setBody(e.toString());
         }
