@@ -28,5 +28,5 @@ script:
 after_success:
 - echo "TRAVIS_BRANCH ${TRAVIS_BRANCH} tag tillkuhn/functions-wetternode:${TRAVIS_COMMIT}"
 - if [[ "$TRAVIS_BRANCH" == "master" ]]; then echo $DOCKER_PASS | docker login --username $DOCKER_USER --password-stdin; fi
-- docker tag tillkuhn/functions-wetternode:latest "tillkuhn/functions-wetternode:${TRAVIS_COMMIT}"
-- if [[ "$TRAVIS_BRANCH" == "master" ]]; then docker push "tillkuhn/functions-base64:${TRAVIS_COMMIT}"; fi
+- docker tag tillkuhn/wetternode:latest "tillkuhn/wetternode:${TRAVIS_COMMIT}"
+- if [[ "$TRAVIS_BRANCH" == "master" ]]; then docker push "tillkuhn/wetternode:${TRAVIS_COMMIT}"; fi
