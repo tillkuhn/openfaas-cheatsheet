@@ -12,6 +12,8 @@
   - [Deploy an invoke new function](#deploy-an-invoke-new-function)
   - [Interact with REST API](#interact-with-rest-api)
   - [Develop new function with your favourite template](#develop-new-function-with-your-favourite-template)
+  - [OpenFaaS in CI](#openfaas-in-ci)
+  - [OpenFaaS Serverless Dashboard (Grafana)](#openfaas-serverless-dashboard-grafana)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
