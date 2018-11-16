@@ -12,7 +12,7 @@ services:
 
 before_install:
 - curl -sSL https://cli.openfaas.com | sudo sh
-- cd base64 && npm install && cd ..
+- cd wetternode && npm install && cd ..
 
 script:
 - cd base64 && npm run test && cd ..
@@ -27,5 +27,5 @@ script:
 
 after_success:
 #- if [[ "$TRAVIS_BRANCH" == "master" ]]; then echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin; fi
-#- docker tag templum/functions-base64:latest "templum/functions-base64:${TRAVIS_COMMIT}"
-#- if [[ "$TRAVIS_BRANCH" == "master" ]]; then docker push "templum/functions-base64:${TRAVIS_COMMIT}"; fi
+#- docker tag tillkuhn/functions-wetternode:latest "tillkuhn/functions-wetternode:${TRAVIS_COMMIT}"
+#- if [[ "$TRAVIS_BRANCH" == "master" ]]; then docker push "tillkuhn/functions-base64:${TRAVIS_COMMIT}"; fi
