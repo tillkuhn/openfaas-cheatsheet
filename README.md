@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [OpenFaaS - Serverless Functions Made Simple¶](#openfaas---serverless-functions-made-simple%C2%B6)
+- [OpenFaaS - Serverless Functions Made Simple](#openfaas---serverless-functions-made-simple)
   - [Install Minikube](#install-minikube)
   - [Install faas-netes manually (alternatively via helm)](#install-faas-netes-manually-alternatively-via-helm)
   - [Open OpenFaaS UI and Minikube dashboard](#open-openfaas-ui-and-minikube-dashboard)
@@ -93,6 +93,20 @@
     Arch: x64
     CPU count: 2
     Uptime: 5134
+
+* Deploy and invoke via CLI   
+
+    $ faas-cli deploy --image functions/nodeinfo:latest --name nodeinfo --gateway http://192.168.64.4:31112/
+    Deployed. 202 Accepted.
+
+    $ faas-cli invoke nodeinfo --gateway http://192.168.64.4:31112/ </dev/null
+    Reading from STDIN - hit (Control + D) to stop.
+    Hostname: nodeinfo-56778c558b-8tz5c
+
+    Platform: linux
+    Arch: x64
+    CPU count: 2
+    Uptime: 6583
 
 ## Interact with REST API
 
